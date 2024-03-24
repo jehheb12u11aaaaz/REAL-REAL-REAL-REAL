@@ -1,0 +1,323 @@
+local lib = local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+-------------------------------------------------   
+local window = Library.CreateLib("Lonely nuker V2 by lonelywhale&mob_zer", "DarkTheme")
+-------------------------------------------------  
+local player = game.Players.LocalPlayer
+local backpack = player.Backpack
+-------------------------------------------------  
+local dupingtab = window:NewTab("Duping")
+local nukingtab = window:NewTab("Nuking")
+local freezingtab = window:NewTab("Projectile freezer")
+local funtab = window:NewTab("Fun")
+local section1 = dupingtab:NewSection("List of tools")
+local section2 = nukingtab:NewSection("List of nuke tools")
+local section3 = freezingtab:NewSection("List of tools")
+local section4 = freezingtab:NewSection("Funny list")
+-------------------------------------------------  
+local c4amount
+local grenadeamount
+local firebombamount
+local waterflaskamount
+local poisonflaskamount
+
+
+section1:NewLabel("More features will be coming soon.")
+-------------------------------------------------  
+section1:NewSlider("Amount of C4", "Choose how much", 300, 0, function(amount)
+    c4amount = amount
+end)
+
+section1:NewSlider("Amount of Grenades", "Choose how much", 300, 0, function(amount)
+    grenadeamount = amount
+end)
+
+section1:NewSlider("Amount of Fire bombs", "Choose how much", 300, 0, function(amount)
+    firebombamount = amount
+end)
+
+section1:NewSlider("Amount of Water flasks", "Choose how much", 300, 0, function(amount)
+    waterflaskamount = amount
+end)
+
+section1:NewSlider("Amount of Poison flasks", "Choose how much", 300, 0, function(amount)
+    poisonflaskamount = amount
+end)
+-------------------------------------------------  
+section1:NewButton("Dupe C4", "Click me to dupe", function()
+    for i = 1, c4amount do
+            local args = {
+            [1] = 0,
+            [2] = "0:0:0:0" -- DO NOT CHANGE ME OR IT WILL CHANGE THE TOOLS
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Item"):FireServer(unpack(args))
+    end
+    task.wait(6)
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name ~= "C4" then
+            v:Destroy()
+        end
+    end
+end)
+
+section1:NewButton("Dupe Grenades", "Click me to dupe", function()
+    for i = 1, grenadeamount do
+            local args = {
+            [1] = 0,
+            [2] = "0:0:0:0" -- DO NOT CHANGE ME OR IT WILL CHANGE THE TOOLS
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Item"):FireServer(unpack(args))
+    end
+    task.wait(6)
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name ~= "Grenade" then
+            v:Destroy()
+        end
+    end
+end)
+
+section1:NewButton("Dupe Fire bombs", "Click me to dupe", function()
+    for i = 1, firebombamount do
+            local args = {
+            [1] = 0,
+            [2] = "0:0:0:0" -- DO NOT CHANGE ME OR IT WILL CHANGE THE TOOLS
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Item"):FireServer(unpack(args))
+    end
+    task.wait(6)
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name ~= "Fire bomb" then
+            v:Destroy()
+        end
+    end
+end)
+
+section1:NewButton("Dupe Water flasks", "Click me to dupe", function()
+    for i = 1, waterflaskamount do
+            local args = {
+            [1] = 0,
+            [2] = "0:0:2:0" -- DO NOT CHANGE ME OR IT WILL CHANGE THE TOOLS
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Item"):FireServer(unpack(args))
+    end
+    task.wait(6)
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name ~= "Water flask" then
+            v:Destroy()
+        end
+    end
+end)
+
+section1:NewButton("Dupe Poison flasks", "Click me to dupe", function()
+    for i = 1, poisonflaskamount do
+            local args = {
+            [1] = 0,
+            [2] = "0:0:1:0" -- DO NOT CHANGE ME OR IT WILL CHANGE THE TOOLS
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Item"):FireServer(unpack(args))
+    end
+    task.wait(6)
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name ~= "Poison flask" then
+            v:Destroy()
+        end
+    end
+end)
+-------------------------------------------------  
+
+section2:NewButton("C4 Nuke", "Spams C4's", function()
+    for _, v in pairs(backpack:GetChildren()) do
+       if v:IsA("Tool") and v.Name == "C4" then
+          v:Activate()
+          task.wait(0.1)
+       end
+    end
+end)
+
+
+section2:NewButton("Grenade nuke", "Spam grenades", function()
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == "Grenade" then
+           v.start:FireServer()
+        end
+        wait(3)
+        local args = {
+            [1] = game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(14,3,13)
+            [2] = 1686851243.277296,
+            [3] = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(15,4,12)
+        }
+        if v:IsA("Tool") and v.Name == "Grenade" then
+            v.throw:FireServer(unpack(args))
+         end
+    end
+end)
+
+
+section2:NewButton("Fire bomb nuke", "Spam fire bombs", function()
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == "Fire bomb" then
+           v.start:FireServer()
+        end
+        wait(3)
+        local args = {
+            [1] = game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(14,3,13)
+            [2] = 1686851243.277296,
+            [3] = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(15,4,12)
+        }
+        if v:IsA("Tool") and v.Name == "Fire bomb" then
+            v.throw:FireServer(unpack(args))
+         end
+    end
+end)
+
+section2:NewButton("Water flask nuke", "Spam Water flasks", function()
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == "Water flask" then
+           v.start:FireServer()
+        end
+        wait(3)
+        local args = {
+            [1] = game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(14,3,13)
+            [2] = 1686851243.277296,
+            [3] = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(15,4,12)
+        }
+        if v:IsA("Tool") and v.Name == "Water flask" then
+            v.throw:FireServer(unpack(args))
+         end
+    end
+end)
+
+section2:NewButton("Poison flask nuke", "Spam Poison flasks", function()
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == "Poison flask" then
+           v.start:FireServer()
+        end
+        wait(3)
+        local args = {
+            [1] = game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(14,3,13)
+            [2] = 1686851243.277296,
+            [3] = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(15,4,12)
+        }
+        if v:IsA("Tool") and v.Name == "Poison flask" then
+            v.throw:FireServer(unpack(args))
+         end
+    end
+end)
+-------------------------------------------------  
+
+section3:NewButton("Grenade freeze", "Freeze grenades", function()
+    local grenade = backpack:FindFirstChild("Grenade")
+    grenade.Parent = player.Character
+    for method1 = 1, 50 do
+        grenade.start:FireServer()
+    end
+    wait(3)
+    for method2 = 1, 50 do
+    local args = {
+        [1] = game.Players.LocalPlayer.Character.Torso.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50)),
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character.Head.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50))
+        }
+    
+    grenade.throw:FireServer(unpack(args))
+    end
+end)
+
+section3:NewButton("Fire bomb freeze", "Freeze fire bombs", function()
+    local firebomb = backpack:FindFirstChild("Fire bomb")
+    firebomb.Parent = player.Character
+    for method1 = 1, 50 do
+        firebomb.start:FireServer()
+    end
+    wait(3)
+    for method2 = 1, 50 do
+    local args = {
+        [1] = game.Players.LocalPlayer.Character.Torso.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50)),
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character.Head.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50))
+        }
+    
+        firebomb.throw:FireServer(unpack(args))
+    end
+end)
+
+section3:NewButton("Water flask freeze", "Freeze water flasks", function()
+    local water = backpack:FindFirstChild("Water flask")
+    water.Parent = player.Character
+    for method1 = 1, 50 do
+        water.start:FireServer()
+    end
+    wait(3)
+    for method2 = 1, 50 do
+    local args = {
+        [1] = game.Players.LocalPlayer.Character.Torso.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50)),
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character.Head.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50))
+        }
+    
+        water.throw:FireServer(unpack(args))
+    end
+end)
+
+section3:NewButton("Poison flask freeze", "Freeze poison flasks", function()
+    local poison = backpack:FindFirstChild("Poison flask")
+    poison.Parent = player.Character
+    for method1 = 1, 50 do
+        poison.start:FireServer()
+    end
+    wait(3)
+    for method2 = 1, 50 do
+    local args = {
+        [1] = game.Players.LocalPlayer.Character.Torso.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50)),
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character.Head.Position - Vector3.new(math.random(1,50), math.random(1,50), math.random(1,50))
+        }
+    
+        poison.throw:FireServer(unpack(args))
+    end
+end)
+
+
+section4:NewButton("Kamikaze (Requires grenade)", "Literally fucking explode", function()
+    local grenade = backpack:FindFirstChild("Grenade")
+    grenade.Parent = player.Character
+    grenade.start:FireServer()
+    wait(3)
+    local args = {
+        [1] = game.Players.LocalPlayer.Character["Left Arm"].Position + game.Players.LocalPlayer.Character.Torso.Position,
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character["Right Arm"].Position + game.Players.LocalPlayer.Character.Head.Position
+        }
+    
+    grenade.throw:FireServer(unpack(args))
+end)
+
+section4:NewButton("Tsar bomba (Requires C4)", "Destruction", function()
+    for _, v in pairs(backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == "C4" then
+           v:Activate()
+        end
+     end
+end)
+
+section4:NewButton("Flame thrower (Requires Fire bomb)", "OH GOD", function()
+    for i = 1, 40 do
+        local firebomb = backpack:FindFirstChild("Fire bomb")
+        firebomb.Parent = player.Character
+        firebomb.start:FireServer()
+        wait(3)
+        local args = {
+        [1] = game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(math.random(1,20), math.random(1,15), math.random(1,20)),
+        [2] = 1686851243.277296,
+        [3] = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(math.random(1,20), math.random(1,17), math.random(1,20))
+        }
+    
+        firebomb.throw:FireServer(unpack(args))
+        wait(1)
+    end
+end)
+
