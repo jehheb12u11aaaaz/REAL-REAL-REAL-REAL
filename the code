@@ -1,6 +1,6 @@
-local lib = local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 -------------------------------------------------   
-local window = Library.CreateLib("Lonely nuker V2 by lonelywhale&mob_zer", "DarkTheme")
+local window = lib.CreateLib("Lonely nuker V2 by lonelywhale&mob_zer", "DarkTheme")
 -------------------------------------------------  
 local player = game.Players.LocalPlayer
 local backpack = player.Backpack
@@ -12,7 +12,7 @@ local funtab = window:NewTab("Fun")
 local section1 = dupingtab:NewSection("List of tools")
 local section2 = nukingtab:NewSection("List of nuke tools")
 local section3 = freezingtab:NewSection("List of tools")
-local section4 = freezingtab:NewSection("Funny list")
+local section4 = funtab:NewSection("Funny list")
 -------------------------------------------------  
 local c4amount
 local grenadeamount
